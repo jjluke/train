@@ -1,0 +1,139 @@
+var svg = d3.select("svg")
+
+train_stroke_width = 2 + "px"
+train_stroke = "black"
+train_y = 292
+train_x = 290
+train_blue = "#eae600"
+cab_color = "#ea003a"
+window_color = "#00b7ea"
+engine_w = 150
+engine_h = 100
+
+cab_w = 100
+cab_h = 150
+cab_x = 290 + 150
+cab_y = 242 
+roof_w = 125
+roof_h = 50
+roof_x = 278 + 150
+roof_y = 197
+window_x = 450
+window_y = 256
+window_h = 36
+window_w = 78
+wheel_x = 1236
+train = function(){
+  engine = function(engine_x, engine_y){
+   svg.append("rect")
+	.attr({
+      width:engine_w,
+      height:engine_h,
+      x:train_x,
+      y:train_y,
+      fill:train_blue,
+      stroke:train_stroke,
+      "stroke_width": 2+"px"
+    });  	
+  }
+  
+  cab = function(cab_x, cab_y){
+   svg.append("rect")
+	.attr({
+      width:cab_w,
+      height:cab_h,
+      x:cab_x,
+      y:cab_y,
+      fill: cab_color,
+      stroke:train_stroke,
+      "stroke_width": 2+"px"
+    });  	
+  }
+  
+  cab_roof = function(){
+   svg.append("rect")
+	.attr({
+      width:roof_w,
+      height:roof_h,
+      x: roof_x,
+      y: roof_y
+    });  	
+  }
+  
+  cab_window = function(){
+   svg.append("rect")
+	.attr({
+      height: window_h,
+      width: window_w,
+      x: window_x,
+      y:window_y,
+      fill: window_color
+    });  	
+  }
+  
+  wheels = function(){
+    wheel = function(offset){
+      inner_diam = function(offset){
+       svg.append("circle")
+        .attr({
+          cy: wheel_x,
+          cx: 40,
+          r: 15,
+          fill:train_blue
+        });  
+      }
+      outer_diam = function(offset){
+       svg.append("circle")
+        .attr({
+          cx:40,
+          cy: 40,
+          r: 30
+        });  
+      }
+      outer_diam(offset);
+      inner_diam(offset);
+    }
+    
+    wheel(0);
+    wheel(69);
+    wheel(163);
+  }
+  
+  brush_guard = function(){
+    svg.append("path")
+    .attr({
+      
+    })
+  }
+  
+  stack_y = 155
+  stack_x = -64
+  smoke_stack = function(){
+    svg.append("path")
+    .attr({
+
+    })
+    svg.append("rect")
+    .attr({
+
+    })
+  }
+  
+  train_origin = function(){
+   svg.append("circle")
+   .attr({
+
+   })
+  }
+  
+  //train_origin();
+  engine(0, 0);
+  cab(cab_x,cab_y);
+  cab_roof();
+  cab_window();
+  wheels();
+  brush_guard();
+  //smoke_stack();
+}
+
+train();
